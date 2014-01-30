@@ -1,15 +1,25 @@
 import unittest
-from rpg import Room
+import random
+from rpg import Scene, Death
 
 class RPGTest(unittest.TestCase):
 
 	def test_room(self):
-		gold = Room("GoldRoom",
+		gold = Scene("GoldRoom",
 			"""This room has gold in it you can grab. There's a door to the north""")
 		self.assertEqual(gold.name, "GoldRoom")
 		self.assertEqual(gold.paths, {})
 
 	def test_room_paths(self):
-		center = Room("Center", "Test room in the center.")
-		north  = Room("North", "Test room in the north.")
-		south  = Room("South", "Test room in the south.")
+		center = Scene("Center", "Test room in the center.")
+		north  = Scene("North", "Test room in the north.")
+		south  = Scene("South", "Test room in the south.")
+
+		center.add_paths({'north': north, 'south':south})
+		self.assertEqual(center.go('north'), north)
+		self.assertEqual(center.go('south'), south)
+
+	def test_death_scene(self):
+		death = Death("Death Scene", 
+			"""You kinda suck at this""")
+		self.assertEqual(death.quips, ['a','b','c','d','e'])
