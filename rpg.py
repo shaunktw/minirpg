@@ -47,3 +47,13 @@ class Map(object):
 
 	def opening_scene(self):
 		pass
+
+class Room(object):
+
+	def __init__(self,name,description):
+		self.name = name
+		self.description = description
+		self.paths = {}
+	
+	def enter(self):
+		pass
