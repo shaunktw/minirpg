@@ -36,6 +36,16 @@ class CentralCorridor(Scene):
         You're running down the central corridor to the Weapons Armory when a Gothon jumps out, red scaly skin, dark grimy teeth, 
         and evil clown costume flowing around his hate filled body. He's blocking the door to the Armory and about to pull a weapon to blast you. """
 
+    	action = raw_input("What do you want to do? (shoot, dodge, run) > " )
+
+    	if action == "shoot" or "s":
+    		print """ Quick on the draw you yank out your blaster and fire it at the Gothon. 
+    		His clown costume is flowing and moving around his body, which throws off your aim.  
+    		Your laser hits his costume but misses him entirely. This completely ruins his brand new costume 
+    		his mother bought him, which makes him fly into an insane rage and blast you repeatedly in the face until you are dead.  
+    		Then he eats you."""
+    		return 'death'
+
 class LaserWeaponArmory(Scene):
 
 	def enter(self):
@@ -60,6 +70,13 @@ class Engine(object):
 		pass
 
 class Map(object):
+
+	scenes = { 'central_corridor': CentralCorridor(),
+		       'death': Death(),
+		       'escape_pod': EscapePod(),
+		       'laser_weapon_armory': LaserWeaponArmory(),
+		       'the_bridge': theBridge()
+		       }
 
 	def __init__(self, start_scene):
 		pass
