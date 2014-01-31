@@ -21,15 +21,20 @@ class Death(Scene):
 			 "Your mom would be proud..if she were smarter.",
 			 "My grandma can play better than you.",
 			 "You should retire..and get go to gaming school",
-			 "I have a small puppy that's better than this.."]
+			 "I have a small puppy that's better than you"]
 
 	def enter(self):
-		pass
+		print Death.quips[randint(0,len(self.quips)-1)]
+		exit(1)
 #Central Corridor is a scene since it's a type of scene
 class CentralCorridor(Scene):
 
 	def enter(self):
-		pass
+		print """ The Gothons of Planet Percal #25 have invaded your ship and destroyed your entire crew.
+		You are the last surviving member and your last mission is to get the neutron destruct bomb from the Weapons Armory,
+		put it in the bridge, and blow the ship up after getting into an escape pod. \n
+        You're running down the central corridor to the Weapons Armory when a Gothon jumps out, red scaly skin, dark grimy teeth, 
+        and evil clown costume flowing around his hate filled body. He's blocking the door to the Armory and about to pull a weapon to blast you. """
 
 class LaserWeaponArmory(Scene):
 

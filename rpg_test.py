@@ -22,4 +22,5 @@ class RPGTest(unittest.TestCase):
 	def test_death_scene(self):
 		death = Death("Death Scene", 
 			"""You kinda suck at this""")
-		self.assertEqual(death.quips, ['a','b','c','d','e'])
+		result = randint(0,5)
+		self.assertEqual(death.quips, in_range(result))
