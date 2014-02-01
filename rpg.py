@@ -4,18 +4,8 @@ from random import randint
 class Scene(object):
 
 	def enter(self):
-		pass
-
-	def __init__(self,name,description):
-		self.name = name
-		self.description = description
-		self.paths = {}
-
-	def add_paths(self, paths):
-		self.paths.update(paths)
-
-	def go(self, direction):
-		return self.paths.get(direction, None)
+		print "This scene is not yet configured. Subclass it and implement enter()"
+		exit(1)
 
 #Death inherits scene since it's a type of scene
 class Death(Scene):
@@ -110,11 +100,20 @@ class EscapePod(Scene):
 class Engine(object):
 
 	def __init__(self, scene_map):
-		pass
+		print "Engine __init__ has scene_map", scene_map
+		self.scene_map = scene_map
 
 	def play(self):
-		pass
+		current_scene = self.scene_map.opening_scene
+		print "Play's first scene", current_scene
 
+		while True:
+			print "\n-----------"
+			next_scene_name = current_scene.enter()
+			print "next_scene", next_scene_name
+			current_scene = self.scene_map.next_scene(next_scene_name)
+			print "map returns new scene", current_scene
+			
 class Map(object):
 
 	scenes = { 'central_corridor': CentralCorridor(),
@@ -123,11 +122,20 @@ class Map(object):
 		       'laser_weapon_armory': LaserWeaponArmory(),
 		       'the_bridge': theBridge()
 		       }
-	def __init__(self, start_scene):
-		pass
 
-	def next_scene(self):
-		pass
+	def __init__(self, start_scene):
+		self.start_scene = start_scene
+		print "start_scene in __init__", self.start_scene
+
+	def next_scene(self, scene_name):
+		print "start_scene in next_scene"
+		val = Map.scenes.get(scene_name)
+		print "next_scene returns", val
+		return val
 
 	def opening_scene(self):
-		pass
+		return self.next_scene(self.start_scene)
+
+a_map = Map('central_corridor')
+a_game = Engine(a_map)
+a_game.play()
