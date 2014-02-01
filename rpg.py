@@ -25,7 +25,7 @@ class Death(Scene):
 			 "My grandma can play better than you.",
 			 "You should retire..and get go to gaming school",
 			 "I have a small puppy that's better than you"]
-			 
+
 	def enter(self):
 		print Death.quips[randint(0,len(self.quips)-1)]
 		exit(1)
@@ -70,7 +70,32 @@ class CentralCorridor(Scene):
 class LaserWeaponArmory(Scene):
 
 	def enter(self):
-		pass
+		print "You do a crazy wheelcart into the Weapon Armoury, crounch and scan the room"
+		print "for more Gothons that might be hiding. It's dead quiet..too quiet...."
+		print "You stand up and run to the far side of the room and find the"
+		print "neutron bomb in its container. There's a keypad lock on the box"
+		print "and you need the code to get the bomb out. If you get the code wrong 10 times"
+		print "then the lock closes forever and you can't get the bomb. The code is 3 digits."
+
+		code = "{0} {1} {2}".format(randint(1,9), randint(1,9), randint(1,9))
+		guess = raw_input("[KEYPAD]> ")
+		guesses = 0
+
+		while guess != code and guesses < 10:
+			print "BZZZZZZZZZZZZZ!!!"
+			guesses += 1
+			guess = raw_input("[KEYPAD]> ")
+
+		if guess == code:
+			print "The container clicks open and the seal breaks, letting gas out."
+			print "You grab the neutron bomb and run as fast as you can to the"
+			print "bridge where you must place the bomb in the right spot."
+			return 'bridge'
+		else:
+			print "The lock buzzes one last time and then you hear a loud melting sound"
+			print "as the mechanism is fused together. You decide to sit there, and finally"
+			print "the Gothons blow up the ship from their ship and you die...."
+			return 'death'
 
 class theBridge(Scene):
 	
