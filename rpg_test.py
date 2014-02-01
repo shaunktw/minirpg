@@ -4,6 +4,11 @@ from rpg import Scene, Death
 
 class RPGTest(unittest.TestCase):
 
+	def setUp(self):
+		self.randTest = random.Random()
+		rng = self.randTest
+		rng.seed(42)
+
 	def test_room(self):
 		gold = Scene("GoldRoom",
 			"""This room has gold in it you can grab. There's a door to the north""")
@@ -22,5 +27,6 @@ class RPGTest(unittest.TestCase):
 	def test_death_scene(self):
 		death = Death("Death Scene", 
 			"""You kinda suck at this""")
-		result = randint(0,5)
-		self.assertEqual(death.quips, in_range(result))
+		assert self.death.quips(rng.randint(0,4)) == "My grandma can play better than you."
+		assert self.death.quips(rng.randint(0,3)) == "You should retire..and get go to gaming school"
+		assert self.death.quips(rng.randint(0,2)) == "I have a small puppy that's better than you"
