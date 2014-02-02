@@ -90,7 +90,40 @@ class LaserWeaponArmory(Scene):
 class theBridge(Scene):
 	
 	def enter(self):
-		pass
+		print "You burst onto the Bridge with the neutron destructor bomb"
+		print "under your arm and surprise 5 Gothons who are trying to"
+		print "take control of the ship. Each of them has an even uglier"
+		print "clown costume than the last. They haven't pulled their weapons"
+		print "out yet, as they see the active bomb under your arm and don't want"
+		print "to set it off"
+
+		action = raw_input("What do you do? (throw the bomb, slowly place the bomb, drop the bomb and fire your gun) > ")
+
+		if action == "throw the bomb":
+		   print "In a panic you throw the bomb at the group of Gothons"
+		   print "and make a leap for the door. Right as you drop it a Gothon"
+		   print "shoots you right in the back killing you."
+		   print "Your vision grows blurry and you see another Gothon frantically trying"
+		   print "to disarm the bomb. You choke in your own pool of blood and your vision finally fades..."
+		   return 'death'
+		
+		elif action == "slowly place the bomb":
+			print "You point your blaster at the bomb under your arm"
+			print "and the Gothons put their hands up and start to sweat."
+			print "You inch backward to the door, open it, and then carefully"
+			print "place the bomb on the floor, pointing your blaster at it."
+			print "You then jump back through the door, punch the close button"
+			print "and blast the lock so the Gothons can't get out."
+			print "Now that the bomb is placed you run to the escape pod to"
+			print "get off this tin can."
+			return 'escape_pod'
+			
+		elif action == "drop the bomb and fire your gun":
+			print "You hastily drop the bomb under your feet and the timer starts ticking"
+			print "The Gothons panic and throws their arms in the air as they retreat."
+			print "You pick fire your gun haphazardly killing every one of them."
+			print "However, the bomb continues to tick and you have no time to disarm it."
+			return 'death'
 
 class EscapePod(Scene):
 
