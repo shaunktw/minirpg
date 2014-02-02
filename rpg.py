@@ -104,7 +104,7 @@ class Engine(object):
 		self.scene_map = scene_map
 
 	def play(self):
-		current_scene = self.scene_map.opening_scene
+		current_scene = self.scene_map.opening_scene()
 		print "Play's first scene", current_scene
 
 		while True:
@@ -113,7 +113,7 @@ class Engine(object):
 			print "next_scene", next_scene_name
 			current_scene = self.scene_map.next_scene(next_scene_name)
 			print "map returns new scene", current_scene
-			
+
 class Map(object):
 
 	scenes = { 'central_corridor': CentralCorridor(),
